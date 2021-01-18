@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lesson 5", "lesson 5", "{E8945C8A-8047-48D1-ACAC-9DC78C895AB9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{35E8F710-AB9B-46AE-815A-A2C3453694AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "manifests", "manifests", "{84FDC34A-C6B7-447F-91CB-83BE84D999B3}"
+	ProjectSection(SolutionItems) = preProject
+		lesson 5\manifests\otus-deployment.yaml = lesson 5\manifests\otus-deployment.yaml
+		lesson 5\manifests\otus-ingress.yaml = lesson 5\manifests\otus-ingress.yaml
+		lesson 5\manifests\otus-service.yaml = lesson 5\manifests\otus-service.yaml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "otus", "lesson 5\app\otus\otus.csproj", "{912653A9-F962-4330-A929-B4C9F00227FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{912653A9-F962-4330-A929-B4C9F00227FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{912653A9-F962-4330-A929-B4C9F00227FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{912653A9-F962-4330-A929-B4C9F00227FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{912653A9-F962-4330-A929-B4C9F00227FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{35E8F710-AB9B-46AE-815A-A2C3453694AA} = {E8945C8A-8047-48D1-ACAC-9DC78C895AB9}
+		{84FDC34A-C6B7-447F-91CB-83BE84D999B3} = {E8945C8A-8047-48D1-ACAC-9DC78C895AB9}
+		{912653A9-F962-4330-A929-B4C9F00227FE} = {35E8F710-AB9B-46AE-815A-A2C3453694AA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9E539097-4035-4362-8815-1E2680000381}
+	EndGlobalSection
+EndGlobal

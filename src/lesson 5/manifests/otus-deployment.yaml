@@ -1,0 +1,25 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: otus
+  labels:
+    app: otus
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: otus
+  template:
+    metadata:
+      labels:
+        app: otus
+    spec:
+      containers:
+        - name: otus
+          image: 'ledzhy/otus:latest'
+          livenessProbe:
+            httpGet:
+                path: /health
+                port: 8000
+            initialDelaySeconds: 3
+            periodSeconds: 3
