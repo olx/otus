@@ -1,0 +1,28 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: {{.Values.name}}
+  labels:
+    app: {{.Values.name}}
+spec:
+  replicas: {{.Values.replicaCount}}
+  selector:
+    matchLabels:
+      app: {{.Values.name}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.name}}
+    spec:
+      containers:
+        - name: {{.Values.name}}
+          image: '{{.Values.image.name}}:{{.Values.image.tag}}'
+          livenessProbe:
+            httpGet:
+                path: {{.Values.health.path}}
+                port: {{.Values.network.port}}
+            initialDelaySeconds: {{.Values.health.delay}}
+            periodSeconds: {{.Values.health.period}}
+          envFrom:
+          - secretRef:
+              name: {{.Values.name}}
