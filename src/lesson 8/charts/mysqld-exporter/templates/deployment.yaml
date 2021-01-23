@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysqld-exporter
+  labels:
+    app: mysqld-exporter
+spec:
+  selector:
+    matchLabels:
+      app: mysqld-exporter
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9104"
+      labels:
+        app: mysqld-exporter
+    spec:
+      containers:
+      - name: mysqld-exporter
+        image: prom/mysqld-exporter
+        env:
+        - name: DB_ROOT_PASSWORD                   
+          valueFrom:
+            secretKeyRef:
+                name: otus-mysql
+                key: mysql-root-password
+        - name: DATA_SOURCE_NAME
+          value: root:$(DB_ROOT_PASSWORD)@(otus-mysql:3306)/
+        ports:
+        - containerPort: 9104

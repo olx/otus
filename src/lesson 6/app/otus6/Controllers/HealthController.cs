@@ -13,6 +13,11 @@ namespace otus.Controllers
         {
             return new { status = "OK" };        
         }
+        [Route("/error")]
+        public object Error()
+        {
+            throw new Exception("Internal server error");
+        }
 
     }
 }

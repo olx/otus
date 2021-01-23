@@ -24,9 +24,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "otus6", "lesson 6\app\otus6\otus6.csproj", "{8D1CE359-6B8E-4C17-9158-3D5F10D1B3AF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "postman", "postman", "{F7544A80-C631-48B0-B6CC-2588357EBDDC}"
-	ProjectSection(SolutionItems) = preProject
-		lesson 6\postman\otus.postman_collection.json = lesson 6\postman\otus.postman_collection.json
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,7 +49,7 @@ Global
 		{912653A9-F962-4330-A929-B4C9F00227FE} = {35E8F710-AB9B-46AE-815A-A2C3453694AA}
 		{8E9DBB3C-F53F-4B15-A2A7-DD964A1C15AB} = {ADCA584B-CED5-41EF-B28F-0D7DC0BC9815}
 		{8D1CE359-6B8E-4C17-9158-3D5F10D1B3AF} = {8E9DBB3C-F53F-4B15-A2A7-DD964A1C15AB}
-		{F7544A80-C631-48B0-B6CC-2588357EBDDC} = {ADCA584B-CED5-41EF-B28F-0D7DC0BC9815}
+		{F7544A80-C631-48B0-B6CC-2588357EBDDC} = {8E9DBB3C-F53F-4B15-A2A7-DD964A1C15AB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E539097-4035-4362-8815-1E2680000381}
