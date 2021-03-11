@@ -11,14 +11,14 @@ spec:
       http:
         paths:
           - path: /api/user/create
-            pathType: Exact
+            pathType: Prefix
             backend:
               service:
                 name: identityserver
                 port:
                   number: 5000
           - path: /api/user/login
-            pathType: Exact
+            pathType: Prefix
             backend:
               service:
                 name: identityserver

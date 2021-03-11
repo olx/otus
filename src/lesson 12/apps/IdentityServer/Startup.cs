@@ -16,6 +16,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using JwtExtension;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Threading;
 
 namespace IdentityServer
 {
@@ -38,7 +40,7 @@ namespace IdentityServer
 
             services.AddDbContextPool<DataContext>(options => options
                 .UseMySql(connectionString, x => x.ServerVersion(version)));
-            
+
             services.TryAddSingleton<ISystemClock, SystemClock>();
             services.AddIdentityCore<AppUser>().AddEntityFrameworkStores<DataContext>().AddSignInManager<SignInManager<AppUser>>();
 
@@ -73,6 +75,28 @@ namespace IdentityServer
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                var services = serviceScope.ServiceProvider;
+                var context = services.GetService<DataContext>();
+                var userManager = services.GetService<UserManager<AppUser>>();
+                while (true)
+                {
+                    try
+                    {                       
+                        context.Database.Migrate();
+                        DataSeed.SeedDataAsync(context, userManager).Wait();
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        Thread.Sleep(TimeSpan.FromSeconds(2));
+                    }
+                }
+            }
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
