@@ -1,0 +1,33 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: otus
+  annotations:
+    kubernetes.io/ingress.class: 'nginx'
+spec:
+  rules:
+    - host: arch.homework    
+      http:
+        paths:
+          - path: /api/user/create
+            pathType: Exact
+            backend:
+              service:
+                name: identityserver
+                port:
+                  number: 5000
+          - path: /api/user/login
+            pathType: Exact
+            backend:
+              service:
+                name: identityserver
+                port:
+                  number: 5000
+          - path: /api/user/profile
+            pathType: Prefix
+            backend:
+              service:
+                name: bffserver
+                port:
+                  number: 5002

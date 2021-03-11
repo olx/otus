@@ -1,0 +1,52 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: identityserver
+  namespace: otus
+  labels:
+    app: identityserver
+spec:
+  ports:
+    - protocol: TCP
+      port: 5000
+      nodePort: 30000
+      name: "http"
+  selector:
+    app: identityserver
+  type: NodePort  
+
+---  
+kind: Service
+apiVersion: v1
+metadata:
+  name: bffserver
+  namespace: otus
+  labels:
+    app: bffserver
+spec:
+  ports:
+    - protocol: TCP
+      port: 5002
+      nodePort: 30002
+      name: "http"
+  selector:
+    app: bffserver
+  type: NodePort  
+  
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: profileserver
+  namespace: otus
+  labels:
+    app: profileserver
+spec:
+  ports:
+    - protocol: TCP
+      port: 5004
+      nodePort: 30004
+      name: "http"
+  selector:
+    app: profileserver
+  type: NodePort  

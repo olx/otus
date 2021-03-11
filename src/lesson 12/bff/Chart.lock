@@ -1,0 +1,6 @@
+dependencies:
+- name: mysql
+  repository: https://charts.helm.sh/stable
+  version: 1.6.9
+digest: sha256:6fb649efd492fc2088806571768daee875279b6049767ae28b582726475cb7a5
+generated: "2021-01-20T13:51:08.4082875+03:00"
