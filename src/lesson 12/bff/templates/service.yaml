@@ -2,7 +2,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: identityserver
-  namespace: otus
   labels:
     app: identityserver
 spec:
@@ -20,7 +19,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: bffserver
-  namespace: otus
   labels:
     app: bffserver
 spec:
@@ -38,7 +36,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: profileserver
-  namespace: otus
   labels:
     app: profileserver
 spec:

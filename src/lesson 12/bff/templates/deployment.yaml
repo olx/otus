@@ -1,7 +1,6 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  namespace: otus
   name: identityserver
   labels:
     app: identityserver
@@ -25,7 +24,6 @@ spec:
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  namespace: otus
   name: bffserver
   labels:
     app: bffserver
@@ -49,7 +47,6 @@ spec:
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  namespace: otus
   name: profileserver
   labels:
     app: profileserver
