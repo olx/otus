@@ -19,7 +19,9 @@ spec:
           image: 'ledzhy/identityserver:latest'
           ports:
             - containerPort: 5000    
-            
+          envFrom:
+          - secretRef:
+              name: {{.Values.name}}            
 ---            
 kind: Deployment
 apiVersion: apps/v1
@@ -42,7 +44,9 @@ spec:
           image: 'ledzhy/bffserver:latest'
           ports:
             - containerPort: 5002
-
+          envFrom:
+          - secretRef:
+              name: {{.Values.name}}
 ---            
 kind: Deployment
 apiVersion: apps/v1
@@ -64,4 +68,7 @@ spec:
         - name: profileserver
           image: 'ledzhy/profileserver:latest'
           ports:
-            - containerPort: 5004            
+            - containerPort: 5004    
+          envFrom:
+          - secretRef:
+              name: {{.Values.name}}            

@@ -47,7 +47,7 @@ namespace IdentityServer.Controllers
 			return Unauthorized();
 		}
 
-		[Route("/api/user/register")]
+		[Route("/api/user/create")]
 		[HttpPost]
 		public async Task<ActionResult<IdentityResult>> Register([FromBody] Login login)
 		{
