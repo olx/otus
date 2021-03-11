@@ -10,21 +10,21 @@ spec:
     - host: arch.homework    
       http:
         paths:
-          - path: /api/user/create
+          - path: /api/user
             pathType: Prefix
             backend:
               service:
                 name: identityserver
                 port:
                   number: 5000
-          - path: /api/user/login
+          - path: /api/login
             pathType: Prefix
             backend:
               service:
                 name: identityserver
                 port:
                   number: 5000
-          - path: /api/user/profile
+          - path: /api/profile
             pathType: Prefix
             backend:
               service:

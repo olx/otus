@@ -25,7 +25,7 @@ namespace IdentityServer.Controllers
 
 		}
 		
-		[Route("/api/user/login")]
+		[Route("/api/login")]
 		[HttpPost]
 		public async Task<ActionResult<User>> LoginAsync([FromBody]Login login)
         {
@@ -47,7 +47,7 @@ namespace IdentityServer.Controllers
 			return Unauthorized();
 		}
 
-		[Route("/api/user/create")]
+		[Route("/api/user")]
 		[HttpPost]
 		public async Task<ActionResult<IdentityResult>> Register([FromBody] Login login)
 		{

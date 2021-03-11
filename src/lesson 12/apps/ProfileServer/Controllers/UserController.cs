@@ -22,7 +22,7 @@ namespace ProfileServer.Controllers
 			_userManager = userManager;
 
 		}
-		[Route("/api/user/profile")]
+		[Route("/api/profile")]
 		[HttpGet]
 		public async Task<ActionResult<Profile>> GetProfile()
 		{
@@ -30,7 +30,7 @@ namespace ProfileServer.Controllers
 			var user = await _context.Users.FindAsync(userId);
 			return new Profile { UserName = user.UserName, Email = user.Email, Phone = user.PhoneNumber };
 		}
-		[Route("/api/user/profile")]
+		[Route("/api/profile")]
 		[HttpPut]
 		public async Task<ActionResult<IdentityResult>> UpdateProfile([FromBody]Login login)
 		{
