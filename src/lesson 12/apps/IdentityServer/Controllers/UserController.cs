@@ -16,9 +16,10 @@ namespace IdentityServer.Controllers
 		private readonly UserManager<AppUser> _userManager;
 		private readonly SignInManager<AppUser> _signInManager;
 		private readonly IJwtGenerator _jwtGenerator;
-
-		public UserController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IJwtGenerator jwtGenerator)
+		private readonly DataContext _context;
+		public UserController(DataContext context, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IJwtGenerator jwtGenerator)
 		{
+			_context = context;
 			_userManager = userManager;
 			_signInManager = signInManager;
 			_jwtGenerator = jwtGenerator;
@@ -51,16 +52,8 @@ namespace IdentityServer.Controllers
 		[HttpPost]
 		public async Task<ActionResult<IdentityResult>> Register([FromBody] Login login)
 		{
-			if (string.IsNullOrEmpty(login.DisplayName) || string.IsNullOrEmpty(login.UserName) || string.IsNullOrEmpty(login.Email) || string.IsNullOrEmpty(login.Password))
+			if (string.IsNullOrEmpty(login?.DisplayName) || string.IsNullOrEmpty(login?.UserName) || string.IsNullOrEmpty(login?.Email) || string.IsNullOrEmpty(login?.Password))
 				return BadRequest();
-
-			var user = await _userManager.FindByNameAsync(login.UserName);
-			if (user != null)
-				return Conflict("User is already exist");
-
-			user = await _userManager.FindByEmailAsync(login.Email);
-			if (user != null)
-				return Conflict("Email is already exist");
 
 			return await _userManager.CreateAsync(new AppUser { DisplayName = login.DisplayName, UserName = login.UserName, Email = login.Email }, login.Password);
 		}

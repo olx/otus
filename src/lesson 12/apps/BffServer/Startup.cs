@@ -62,7 +62,6 @@ namespace BffServer
                 {
                     return Task.FromResult(new HttpResponseMessage(HttpStatusCode.Unauthorized));
                 }
-
                 
             }); 
         }
